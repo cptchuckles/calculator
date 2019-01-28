@@ -1,0 +1,59 @@
+body {
+    text-align: center;
+}
+
+button {
+    margin: 2px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 14pt;
+}
+
+#output {
+    display: block;
+    width: 362px;
+    height: 1em;
+    margin: 1em auto;
+    padding: 1em;
+    font-size: large;
+    border: 1px solid #aaa;
+    border-radius: 5%;
+    box-shadow: 0 1px 3px #444;
+    text-align: right;
+}
+
+.keypad {
+    display: flex;
+    flex-flow: row;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+}
+
+.numpad {
+    display: flex;
+    flex-flow: row wrap;
+    width: 75%;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+.numpad button {
+    width: 90px;
+    flex: 1 0 auto;
+}
+
+
+.opers {
+    display: flex;
+    flex-flow: column;
+    height: auto;
+    width: 25%;
+    justify-content: space-between;
+}
+
+.opers button {
+    height: auto;
+    flex: 1 0 auto;
+}
