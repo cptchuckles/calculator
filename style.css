@@ -42,6 +42,8 @@ button {
 .numpad button {
     width: 32%;
     flex: 0 0 auto;
+    background-color: #ccc;
+    color: #333;
 }
 
 
@@ -56,4 +58,19 @@ button {
 .opers button {
     height: auto;
     flex: 1 0 auto;
+}
+
+.oper {
+    background-color: #0cf;
+    color: #333;
+}
+
+#cls {
+    background-color: #ca2;
+    color: #333;
+}
+
+#eval {
+    background-color: #4ca;
+    color: #333;
 }
