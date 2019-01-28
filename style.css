@@ -34,14 +34,14 @@ button {
     display: flex;
     flex-flow: row wrap;
     width: 75%;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
 }
 
 .numpad button {
-    width: 90px;
-    flex: 1 0 auto;
+    width: 32%;
+    flex: 0 0 auto;
 }
 
 
