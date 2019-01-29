@@ -10,10 +10,7 @@ button {
 }
 
 #display {
-    display: flex;
-    flex-flow: row;
-    align-content: center;
-    align-items: stretch;
+    display: block;
     width: 362px;
     height: 1em;
     margin: 1em auto;
@@ -23,18 +20,6 @@ button {
     border-radius: 5px;
     box-shadow: 0 1px 3px #444;
     text-align: right;
-}
-
-#output {
-    height: auto;
-    width: 95%;
-    margin: 0;
-}
-
-#op {
-    height: auto;
-    width: 5%;
-    margin: 0;
 }
 
 .keypad {
