@@ -30,4 +30,21 @@ document.querySelector("#eval").addEventListener("click",
 
 function calc(input) {
     //TODO: implement this
+
+    output.textContent = punctualize(output.textContent);
+}
+
+
+function punctualize(string) {
+    if( isNaN(string) ) return "ERROR";
+    let sides = string.split('.');
+    let left = sides[0];
+    let right = '';
+    if (sides.length === 2) right = sides[1];
+
+    for(i = left.length-3; i > 0; i -= 3) {
+        left = left.slice(0, i) + ',' + left.slice(i);
+    }
+
+    return right.length === 0 ? left : left + '.' + right;
 }
