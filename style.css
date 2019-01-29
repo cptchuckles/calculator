@@ -2,7 +2,7 @@ body {
     text-align: center;
 }
 
-button {
+.button {
     margin: 2px;
     border-radius: 10px;
     font-weight: bolder;
@@ -39,14 +39,14 @@ button {
     align-items: stretch;
 }
 
-.numpad button {
+.numpad div {
     width: 32%;
     flex: 0 0 auto;
     background-color: #ccc;
     color: #333;
 }
 
-button#bs {
+#bs {
     background-color: #c78;
 }
 
@@ -59,7 +59,7 @@ button#bs {
     justify-content: space-between;
 }
 
-.opers button {
+.opers div {
     height: auto;
     flex: 1 0 auto;
 }
