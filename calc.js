@@ -18,13 +18,17 @@ document.querySelector("#cls")
             updateDisplay(eq);
         });
 
-document.querySelector("#eval").addEventListener("click",
-                                () => calc(display.textContent));
+document.querySelector("#eval").addEventListener("click", displayResults);
 
+function displayResults() {
+    eq = calc(eq);
+    updateDisplay(eq);
+}
 
 function calc(input) {
     let preterNums = input.match(/-?\d+\.?\d*[/*]?/g);
     console.log(preterNums);
+
     let finalNums = preterNums.map( (n, i) => {
         const nextNum = (num) => {
             const last = num.slice(-1);
@@ -47,8 +51,10 @@ function calc(input) {
 
         return nextNum(n);
     });
+
     console.log(finalNums);
-    console.log(finalNums.reduce((a,c) => Number(a)+Number(c)));
+    
+    return String(finalNums.reduce((a,c) => Number(a)+Number(c)));
 }
 
 
