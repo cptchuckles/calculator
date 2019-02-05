@@ -4,13 +4,16 @@ const operators = "/+-*";
 const display = document.querySelector("#display");
 let eq = '';
 
+
 document.querySelectorAll(".num, .oper").forEach(b => {
     b.addEventListener("click", () => {
         appendChar(b.textContent);
     });
 });
 
+
 document.querySelector("#bs").addEventListener("click", delChar);
+
 
 document.querySelector("#cls")
         .addEventListener("click", () => {
@@ -18,7 +21,10 @@ document.querySelector("#cls")
             updateDisplay(eq);
         });
 
+
 document.querySelector("#eval").addEventListener("click", displayResults);
+
+
 
 function displayResults() {
     if(eq.slice(-1).match(regOperAll)) return;
@@ -26,6 +32,7 @@ function displayResults() {
     eq = calc(eq);
     updateDisplay(eq);
 }
+
 
 function calc(input) {
     let preNums = input.match(/-?\d*\.?\d*[/*]?/g);
@@ -83,6 +90,7 @@ function punctualize(equation) {
     return nums.reduce((a, s) => a + ops[j++] + s);
 }
 
+
 function addDot(string) {
     let i = string.length;
     do {
@@ -93,6 +101,7 @@ function addDot(string) {
 
     return true;
 }
+
 
 function addZero(string) {
     let i = string.length;
@@ -110,9 +119,11 @@ function addZero(string) {
     return false;
 }
 
+
 function updateDisplay(string) {
     display.textContent = punctualize(string);
 }
+
 
 function appendChar(c) {
     if(operators.includes(c)) {
@@ -132,6 +143,7 @@ function appendChar(c) {
     eq += c;
     updateDisplay(eq);
 }
+
 
 function delChar() {
     eq = eq.slice(0, eq.length - 1);
