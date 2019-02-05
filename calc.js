@@ -26,7 +26,7 @@ function displayResults() {
 }
 
 function calc(input) {
-    let preterNums = input.match(/-?\d+\.?\d*[/*]?/g);
+    let preterNums = input.match(/-?\d*\.?\d*[/*]?/g).slice(0,-1);
     console.log(preterNums);
 
     let finalNums = preterNums.map( (n, i) => {
