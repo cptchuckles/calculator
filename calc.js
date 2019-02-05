@@ -28,18 +28,18 @@ function displayResults() {
 }
 
 function calc(input) {
-    let preterNums = input.match(/-?\d*\.?\d*[/*]?/g);
+    let preNums = input.match(/-?\d*\.?\d*[/*]?/g);
 
-    const finalNums = preterNums.map( (n, i) => {
+    const finalNums = preNums.map( (n, i) => {
         const nextNum = (index) => {
-            const num = preterNums[index];
+            const num = preNums[index];
             const last = num.slice(-1);
 
             if(last !== "*" && last !== "/") return num;
 
             const cNum = num.slice(0,-1);
             const nNum = nextNum(index+1);
-            if(index < preterNums.length-1) preterNums[index+1] = "0";
+            if(index < preNums.length-1) preNums[index+1] = "0";
 
             if(last === "*") {
                 return String(Number(cNum) * Number(nNum));
