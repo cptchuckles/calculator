@@ -21,6 +21,8 @@ document.querySelector("#cls")
 document.querySelector("#eval").addEventListener("click", displayResults);
 
 function displayResults() {
+    if(eq.slice(-1).match(regOperAll)) return;
+
     eq = calc(eq);
     updateDisplay(eq);
 }
