@@ -1,7 +1,7 @@
 const regOperAll = /[\+\-\*\/]/g;
 const operators = "/+-*";
 
-let display = document.querySelector("#display");
+const display = document.querySelector("#display");
 let eq = '';
 
 document.querySelectorAll(".num, .oper").forEach(b => {
@@ -19,13 +19,36 @@ document.querySelector("#cls")
         });
 
 document.querySelector("#eval").addEventListener("click",
-                                () => calc(output.textContent));
+                                () => calc(display.textContent));
 
 
 function calc(input) {
-    //TODO: implement this
+    let preterNums = input.match(/-?\d+\.?\d*[/*]?/g);
+    console.log(preterNums);
+    let finalNums = preterNums.map( (n, i) => {
+        const nextNum = (num) => {
+            const last = num.slice(-1);
 
-    output.textContent = punctualize(output.textContent);
+            if(last !== "*" && last !== "/") return num;
+
+            let cNum = num.slice(0,-1);
+            let nNum = nextNum(preterNums[i+1]);
+            preterNums[i+1] = "0";
+
+            if(last === "*") {
+                let result = String(Number(cNum) * Number(nNum));
+                return result;
+            }
+            if(last === "/") {
+                let result = String(Number(cNum) / Number(nNum));
+                return result;
+            }
+        };
+
+        return nextNum(n);
+    });
+    console.log(finalNums);
+    console.log(finalNums.reduce((a,c) => Number(a)+Number(c)));
 }
 
 
