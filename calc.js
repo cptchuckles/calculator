@@ -94,6 +94,21 @@ function addDot(string) {
     return true;
 }
 
+function addZero(string) {
+    let i = string.length;
+    do {
+        i--;
+    } while( ! operators.includes(string[i]) && i > 0 );
+
+    if( string.slice(i).includes('.') ||
+      !(string.slice(i) === '0') )
+    {
+        return true;
+    }
+
+    return false;
+}
+
 function updateDisplay(string) {
     display.textContent = punctualize(string);
 }
@@ -107,8 +122,13 @@ function appendChar(c) {
     }
     if(c === '.') {
         if( ! addDot(eq) ) return;
+        if( eq.length === 0) eq = '0';
+    }
+    if(c === '0') {
+        if( ! addZero(eq) ) return;
     }
 
+    if(eq === '0' && c !== '.') eq = '';
     eq += c;
     updateDisplay(eq);
 }
