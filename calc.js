@@ -30,14 +30,15 @@ function calc(input) {
     console.log(preterNums);
 
     let finalNums = preterNums.map( (n, i) => {
-        const nextNum = (num) => {
+        const nextNum = (index) => {
+            const num = preterNums[index];
             const last = num.slice(-1);
 
             if(last !== "*" && last !== "/") return num;
 
             let cNum = num.slice(0,-1);
-            let nNum = nextNum(preterNums[i+1]);
-            preterNums[i+1] = "0";
+            let nNum = nextNum(index+1);
+            if(index < preterNums.length-1) preterNums[index+1] = "0";
 
             if(last === "*") {
                 let result = String(Number(cNum) * Number(nNum));
@@ -49,7 +50,7 @@ function calc(input) {
             }
         };
 
-        return nextNum(n);
+        return nextNum(i);
     });
 
     console.log(finalNums);
