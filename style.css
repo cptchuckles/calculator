@@ -3,13 +3,19 @@ body {
 }
 
 .button {
+    transition: all 0.1s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2px;
+    padding: 0;
     border-radius: 10px;
     font-weight: bolder;
     font-size: 14pt;
+}
+
+.button:hover {
+    box-shadow: 0 0 5px #000;
 }
 
 #display {
