@@ -24,6 +24,7 @@ document.querySelector("#eval").addEventListener("click", displayResults);
 window.addEventListener("keydown", k => {
     if(k.key.match(/[0-9/*+-.]/)) {
         appendChar(k.key);
+        if(k.key === "/") k.preventDefault();
         return;
     }
 
