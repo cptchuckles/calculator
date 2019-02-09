@@ -22,10 +22,25 @@ document.querySelector("#eval").addEventListener("click", displayResults);
 
 
 window.addEventListener("keydown", k => {
-    if(k.key.match(/[0-9/*+-.]/)) appendChar(k.key);
-    if(k.key === "Backspace") delChar();
-    if(k.key === '=' || k.key === "Enter") displayResults();
-    if(k.key === "Delete") clear();
+    if(k.key.match(/[0-9/*+-.]/)) {
+        appendChar(k.key);
+        return;
+    }
+
+    switch(k.key) {
+        case "Backspace":
+            delChar();
+            break;
+        case "=":
+        case "Enter":
+            displayResults();
+            break;
+        case "Delete":
+        case "c":
+        case "C":
+        case "Escape":
+            clear();
+    }
 });
 
 
