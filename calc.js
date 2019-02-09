@@ -15,14 +15,18 @@ document.querySelectorAll(".num, .oper").forEach(b => {
 document.querySelector("#bs").addEventListener("click", delChar);
 
 
-document.querySelector("#cls")
-        .addEventListener("click", () => {
-            eq = "";
-            updateDisplay(eq);
-        });
+document.querySelector("#cls").addEventListener("click", clear);
 
 
 document.querySelector("#eval").addEventListener("click", displayResults);
+
+
+window.addEventListener("keydown", k => {
+    if(k.key.match(/[0-9/*+-.]/)) appendChar(k.key);
+    if(k.key === "Backspace") delChar();
+    if(k.key === '=' || k.key === "Enter") displayResults();
+    if(k.key === "Delete") clear();
+});
 
 
 
@@ -30,6 +34,12 @@ function displayResults() {
     if(eq.slice(-1).match(regOperAll)) return;
 
     eq = calc(eq);
+    updateDisplay(eq);
+}
+
+
+function clear() {
+    eq = "";
     updateDisplay(eq);
 }
 
