@@ -95,6 +95,7 @@ function punctualize(equation) {
 
     nums = nums.map(string => {
         if(string.length === 0) return string;
+        if(string === "Infinity") return "ERROR"; // for division by 0
         if( isNaN(string) ) {
             if(string==='.') return '.';
             else return "ERROR";
