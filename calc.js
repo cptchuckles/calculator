@@ -153,6 +153,7 @@ function updateDisplay(string) {
 
 
 function appendChar(c) {
+    if(display.textContent.includes("ERROR")) return;
     if(operators.includes(c)) {
         let last = eq.slice(-1);
         if(operators.includes(last)) {
