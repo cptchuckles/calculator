@@ -163,11 +163,14 @@ function appendChar(c) {
   if(c === '.') {
     if( ! addDot(eq) ) return;
   }
+
+  const canAddZero = addZero(eq);
   if(c === '0') {
-    if( ! addZero(eq) ) return;
+    if( ! canAddZero ) return;
   }
 
   if(eq === '0' && c !== '.') eq = '';
+  if(!canAddZero && c !== '0' && c !== '.') eq = eq.slice(0,-1);
   eq += c;
   updateDisplay(eq);
 }
