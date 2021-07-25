@@ -22,7 +22,7 @@ document.querySelector("#eval").addEventListener("click", displayResults);
 
 
 window.addEventListener("keydown", k => {
-  if(k.key.match(/[0-9/*+-.]/)) {
+  if(k.key.match(/[0-9*/+-.]/)) {
     appendChar(k.key);
     if(k.key === "/") k.preventDefault();
     return;
@@ -61,7 +61,7 @@ function clear() {
 
 
 function calc(input) {
-  let preNums = input.match(/-?\d*\.?\d*[/*]?/g);
+  let preNums = input.match(/-?\d*\.?\d*[*/]?/g);
 
   const finalNums = preNums.map( (n, i) => {
     const nextNum = (index) => {
