@@ -123,15 +123,15 @@ function canAddDot(string) {
 
 
 function canAddZero(string) {
-	const n = string.split(regOperAll).slice(-1)[0].length;
-	const slice = string.slice(n);
-	if( slice.includes('.') ||
-		!(slice.match(/[*/.+]0/) && slice.length === 2) )
-	{
-		return true;
-	}
+	const n = string.split(regOperAll).slice(-1)[0].length + 1;
+	const slice = string.slice(-n);
 
-	return false;
+	if( slice.includes('.') ) return true;
+
+	const zeroAfterOper = slice.match(/[*/+-]0/);
+	if( zeroAfterOper && slice.length == 2 ) return false;
+
+	return true;
 }
 
 
