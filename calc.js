@@ -1,5 +1,4 @@
 const regOperAll = /[\+\-\*\/]/g;
-const operators = "/+-*";
 
 const display = document.querySelector("#display");
 let eq = '';
@@ -118,27 +117,16 @@ function punctualize(equation) {
 }
 
 
-function addDot(string) {
-	let i = string.length;
-	do {
-		i--;
-	} while( ! operators.includes(string[i]) && i > 0 );
-
-	if( string.slice(i).includes('.') ) return false;
-
-	return true;
+function canAddDot(string) {
+	return ! string.split(regOperAll).slice(-1)[0].includes('.');
 }
 
 
-function addZero(string) {
-	let i = string.length;
-	do {
-		i--;
-	} while( ! operators.includes(string[i]) && i > 0 );
-
-	const slice = string.slice(i);
+function canAddZero(string) {
+	const n = string.split(regOperAll).slice(-1)[0].length;
+	const slice = string.slice(n);
 	if( slice.includes('.') ||
-		!(slice.match(/[\*\/\.\+]0/) && slice.length === 2) )
+		!(slice.match(/[*/.+]0/) && slice.length === 2) )
 	{
 		return true;
 	}
@@ -154,23 +142,22 @@ function updateDisplay(string) {
 
 function appendChar(c) {
 	if(display.textContent.includes("ERROR")) return;
+
+	const operators = "/+-*";
 	if(operators.includes(c)) {
 		let last = eq.slice(-1);
 		if(operators.includes(last)) {
 			if(c==='-' && last==='-' || c!=='-') return;
 		}
 	}
-	if(c === '.') {
-		if( ! addDot(eq) ) return;
-	}
 
-	const canAddZero = addZero(eq);
-	if(c === '0') {
-		if( ! canAddZero ) return;
-	}
+	if(c === '.' && ! canAddDot(eq) ) return;
+
+	const caz = canAddZero(eq);
+	if(c === '0' && ! caz ) return;
 
 	if(eq === '0' && c !== '.') eq = '';
-	if(!canAddZero && c !== '0' && c !== '.') eq = eq.slice(0,-1);
+	if(!caz && c !== '0' && c !== '.') eq = eq.slice(0,-1);
 	eq += c;
 	updateDisplay(eq);
 }
