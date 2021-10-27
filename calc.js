@@ -149,6 +149,11 @@ function appendChar(c) {
 		if(operators.includes(last)) {
 			if(c==='-' && last==='-' || c!=='-') return;
 		}
+		if (eq.length > 1) {
+			let last2 = eq.slice(-2);
+			if (operators.includes(last2[0]) && last2[1] === ".")
+				return;
+		}
 	}
 
 	if(c === '.' && ! canAddDot(eq) ) return;
